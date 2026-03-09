@@ -1,4 +1,4 @@
-# Morix
+# # Morix — Online 3 Men's Morris
 Real-time multiplayer Three Men's Morris game built with Python, WebSockets, and JavaScript.
 
 
