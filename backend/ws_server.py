@@ -4,7 +4,7 @@ import json
 import random
 import string
 import os
-from game.game_engine import GameEngine
+from game_engine import GameEngine
 from aiohttp import web
 # rooms[code] = { "game": GameEngine, "players": [ws, ws], "turn": "X", "placed": 0 }
 rooms = {}
