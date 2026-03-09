@@ -1,37 +1,55 @@
 # Morix — Online 3 Men's Morris
-Real-time multiplayer Three Men's Morris game built with Python, WebSockets, and JavaScript.
 
+Morix is a real-time multiplayer implementation of the classic strategy board game **Three Men's Morris**. Two players can host or join a game using a room code and play online in real time.
 
-Morrion — Online 3 Men's Morris
-Morrion is a real-time multiplayer implementation of the classic strategy game Three Men's Morris. The game allows two players to connect using a room code and compete online with instant board updates using WebSocket communication.
-The project demonstrates concepts from network programming, real-time communication, and game logic implementation.
-Game Overview
-Three Men's Morris is played on a 3 × 3 grid.
-The game consists of two phases:
-Placement Phase
-Players take turns placing their three pieces on empty positions of the board.
-Movement Phase
-After all six pieces are placed, players move their pieces to adjacent positions.
-Objective
-The goal is to form a straight line of three pieces before the opponent.
-Features
-Real-time multiplayer gameplay
-Room-based matchmaking system
-Interactive SVG game board
-Turn-based synchronization
-Win detection system
-Host and join functionality using a room code
-Technologies Used
-Python – WebSocket server
-JavaScript – Client-side game logic
-HTML & CSS – User interface
-WebSockets – Real-time communication protocol
+## Features
 
-How to Run Locally
-1.Install dependencies:
-$pip install websockets
+- Real-time multiplayer gameplay
+- Room code system for hosting and joining games
+- Interactive browser-based board
+- Turn-based gameplay
+- Win detection system
 
-2.Run the server:
-$python ws_server.py
+## Technologies Used
 
-Open the game in a browser and start playing.
+- Python
+- WebSockets
+- JavaScript
+- HTML
+- CSS
+
+## How to Run Locally
+
+Install dependencies:
+
+```bash
+pip install websockets
+```
+
+Run the server:
+
+```bash
+python ws_server.py
+```
+
+Open the game in your browser and start playing.
+
+## Project Structure
+
+```
+Morix
+│
+├── ws_server.py
+├── game_engine.py
+├── index.html
+└── requirements.txt
+```
+
+## Game Rules
+
+Three Men's Morris is played on a **3×3 board**.
+
+1. Each player has **three pieces**.
+2. Players place their pieces on empty positions.
+3. After all pieces are placed, players move pieces to **adjacent positions**.
+4. The first player to form a **straight line of three pieces** wins.
