@@ -5,7 +5,7 @@ import random
 import string
 import os
 from game.game_engine import GameEngine
-
+from aiohttp import web
 # rooms[code] = { "game": GameEngine, "players": [ws, ws], "turn": "X", "placed": 0 }
 rooms = {}
 
@@ -128,12 +128,25 @@ async def handler(websocket):
     except asyncio.TimeoutError:
         print("Connection timed out waiting for host/join message")
 
-
+async def index(request):
+    return web.FileResponse('index.html')
 async def main():
     port = int(os.environ.get("PORT", 5000))
     server = await websockets.serve(handler, "0.0.0.0", port)
     print(f"WebSocket server started on ws://0.0.0.0:{port}")
     await asyncio.Future()
+
+
+    app = web.Application()
+    app.router.add_get('/', index)
+    
+    runner = web.AppRunner(app)
+    await runner.setup()
+    
+    site = web.TCPSite(runner, '0.0.0.0', port)
+    await site.start()
+
+
 
 
 asyncio.run(main())
