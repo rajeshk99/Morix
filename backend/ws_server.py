@@ -5,7 +5,7 @@ import random
 import string
 import os
 import sys, os
-sys.path.insert(0, os.path.dirname(__file__))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'game'))
 from game_engine import GameEngine
 from aiohttp import web
 # rooms[code] = { "game": GameEngine, "players": [ws, ws], "turn": "X", "placed": 0 }
