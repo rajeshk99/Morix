@@ -162,6 +162,5 @@ async def main():
     site = web.TCPSite(runner, '0.0.0.0', port)
     await site.start()
     print(f"Server running on port {port}")
-    await asyncio.Future()int(f"HTTP on :{port}, WS on :8765")
     await asyncio.Future()
 asyncio.run(main())
