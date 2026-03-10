@@ -278,7 +278,7 @@ svg {
 <script>
 const wsHost = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
     ? "ws://127.0.0.1:5000"
-    : `wss://${window.location.hostname}`
+    : `wss://${window.location.hostname}/ws`
 let socket = null
 let playerSymbol = null
 let selected = null
