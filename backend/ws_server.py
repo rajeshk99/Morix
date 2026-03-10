@@ -130,20 +130,19 @@ async def handler(websocket):
 
 async def index(request):
     return web.FileResponse('index.html')
+
 async def main():
     port = int(os.environ.get("PORT", 5000))
 
     app = web.Application()
     app.router.add_get('/', index)
-    app.router.add_get('/ws', lambda r: web.Response())  # placeholder
 
     runner = web.AppRunner(app)
     await runner.setup()
     site = web.TCPSite(runner, '0.0.0.0', port)
     await site.start()
 
-    ws_server = await websockets.serve(handler, "0.0.0.0", port + 1)
-    print(f"HTTP server on port {port}, WebSocket server on port {port + 1}")
+    ws_server = await websockets.serve(handler, "0.0.0.0", 8765)
+    print(f"HTTP on :{port}, WS on :8765")
     await asyncio.Future()
-
 asyncio.run(main())
