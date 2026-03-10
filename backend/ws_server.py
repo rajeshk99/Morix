@@ -129,9 +129,9 @@ async def handler(websocket):
 
     except asyncio.TimeoutError:
         print("Connection timed out waiting for host/join message")
-
 async def index(request):
-    return web.FileResponse('index.html')
+    base = os.path.dirname(os.path.abspath(__file__))
+    return web.FileResponse(os.path.join(base, '..', 'frontend', 'index.html'))
 
 async def main():
     port = int(os.environ.get("PORT", 5000))
