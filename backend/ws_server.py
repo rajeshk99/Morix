@@ -136,15 +136,32 @@ async def index(request):
 async def main():
     port = int(os.environ.get("PORT", 5000))
 
+    async def websocket_handler(request):
+        ws = web.WebSocketResponse()
+        await ws.prepare(request)
+        
+        class WSAdapter:
+            async def recv(self): 
+                msg = await ws.receive()
+                return msg.data
+            async def send(self, data): 
+                await ws.send_str(data)
+            @property
+            def closed(self): 
+                return ws.closed
+
+        await handler(WSAdapter())
+        return ws
+
     app = web.Application()
     app.router.add_get('/', index)
+    app.router.add_get('/ws', websocket_handler)
 
     runner = web.AppRunner(app)
     await runner.setup()
     site = web.TCPSite(runner, '0.0.0.0', port)
     await site.start()
-
-    ws_server = await websockets.serve(handler, "0.0.0.0", 8765)
-    print(f"HTTP on :{port}, WS on :8765")
+    print(f"Server running on port {port}")
+    await asyncio.Future()int(f"HTTP on :{port}, WS on :8765")
     await asyncio.Future()
 asyncio.run(main())
