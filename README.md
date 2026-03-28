@@ -1,5 +1,5 @@
 # Morix — Online 3 Men's Morris
-
+play here  ->  ```https://morix-ljog.onrender.com/```
 Morix is a real-time multiplayer implementation of the classic strategy board game **Three Men's Morris**. Two players can host or join a game using a room code and play online in real time.
 
 ## Features
